@@ -1,0 +1,23 @@
+services:
+
+  auth-microfrontend:
+    build:
+      context: auth-microfrontend
+      dockerfile: ../Dockerfile.auth-microfrontend
+    networks:
+      - mestanet
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: ../Dockerfile.frontend
+    ports:
+      - 3000:8080
+    networks:
+      - mestanet
+    depends_on:
+      - auth-microfrontend  
+
+networks:
+  mestanet:
+    driver: bridge
