@@ -13,5 +13,3 @@ RUN npm i \
 COPY . .
 
 CMD [ "yarn", "start" ]
-
-EXPOSE 8080
