@@ -6,6 +6,20 @@ services:
       dockerfile: ../Dockerfile.auth-microfrontend
     networks:
       - mestanet
+  
+  profile-microfrontend:
+    build:
+      context: profile-microfrontend
+      dockerfile: ../Dockerfile.profile-microfrontend
+    networks:
+      - mestanet
+  
+  card-add-microfrontend:
+    build:
+      context: card-add-microfrontend
+      dockerfile: ../Dockerfile.card-add-microfrontend
+    networks:
+      - mestanet
 
   frontend:
     build:
@@ -16,7 +30,9 @@ services:
     networks:
       - mestanet
     depends_on:
-      - auth-microfrontend  
+      - auth-microfrontend 
+      - profile-microfrontend
+      - card-add-microfrontend 
 
 networks:
   mestanet:

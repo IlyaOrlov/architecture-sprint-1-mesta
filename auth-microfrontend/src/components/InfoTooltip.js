@@ -10,12 +10,26 @@ function InfoTooltip() {
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = React.useState(false);
   const [tooltipStatus, setTooltipStatus] = React.useState("");
 
-  const icon = tooltipStatus === 'success' ? SuccessIcon : ErrorIcon
-  const text = tooltipStatus === 'success' ? "Вы успешно зарегистрировались" : 
-     "Что-то пошло не так! Попробуйте ещё раз."
+  const handleLogin = event => {
+    if (!event.detail) {
+      setTooltipStatus("fail");
+      setIsInfoToolTipOpen(true);
+    }
+  }
 
-  const handleChangeInfoToolTipStatus = event => {
-    setIsInfoToolTipOpen(event.detail)
+  const handleRegister = event => {
+    if (event.detail) {
+      setTooltipStatus("success");
+      setIsInfoToolTipOpen(true);
+    }
+    else {
+      setTooltipStatus("fail");
+      setIsInfoToolTipOpen(true);
+    }
+  }
+  
+  const handleClose = event => {
+    setIsInfoToolTipOpen(false)
   }
   
   function onClose() {
@@ -23,15 +37,24 @@ function InfoTooltip() {
   }
 
   React.useEffect(() => {
-    addEventListener("changeInfoToolTipStatus", handleChangeInfoToolTipStatus);
-    return () => removeEventListener("changeInfoToolTipStatus", handleChangeInfoToolTipStatus)
+    addEventListener("login", handleLogin);
+    return () => removeEventListener("login", handleLogin)
+  }, []);
+
+  React.useEffect(() => {
+    addEventListener("register", handleRegister);
+    return () => removeEventListener("register", handleRegister)
   }, []);
   
   React.useEffect(() => {
     addEventListener("close", handleClose);
     return () => removeEventListener("close", handleClose)
   }, []);
-  
+
+  const icon = tooltipStatus === 'success' ? SuccessIcon : ErrorIcon
+  const text = tooltipStatus === 'success' ? "Вы успешно зарегистрировались" : 
+     "Что-то пошло не так! Попробуйте ещё раз."
+
   return (
     <div className={`popup ${isInfoToolTipOpen && 'popup_is-opened'}`}>
       <div className="popup__content">

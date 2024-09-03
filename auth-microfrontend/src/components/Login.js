@@ -1,7 +1,9 @@
 import React from 'react';
 import * as auth from "../utils/auth.js";
 
-import '../styles/login.css';
+import '../styles/login/login.css';
+import '../styles/auth-form/auth-form.css';
+
 
 
 function Login () {

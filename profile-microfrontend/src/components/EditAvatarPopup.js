@@ -2,6 +2,8 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm';
 import api from "../utils/api";
 
+import '../styles/popup/popup.css';
+
 
 function EditAvatarPopup({ inputRef }) {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);

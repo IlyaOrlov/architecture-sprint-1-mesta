@@ -73,6 +73,8 @@ module.exports = (_, argv) => ({
         'auth': 'auth_microfrontend@http://localhost:8081/remoteEntry.js',
         'profile': 'profile_microfrontend@http://localhost:8082/remoteEntry.js',
         'card_add': 'card_add_microfrontend@http://localhost:8083/remoteEntry.js',
+        'card_del': 'card_del_microfrontend@http://localhost:8084/remoteEntry.js',
+        'card_like': 'card_like_microfrontend@http://localhost:8085/remoteEntry.js',
       },
       exposes: {},
       shared: {

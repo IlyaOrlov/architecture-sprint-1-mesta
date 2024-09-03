@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete }) {
+function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const imageStyle = { backgroundImage: `url(${currentUser.avatar})` };
@@ -25,8 +25,6 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
               key={card._id}
               card={card}
               onCardClick={onCardClick}
-              onCardLike={onCardLike}
-              onCardDelete={onCardDelete}
             />
           ))}
         </ul>

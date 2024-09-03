@@ -2,6 +2,8 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm';
 import api from "../utils/api";
 
+import '../styles/popup/popup.css';
+
 
 function AddPlacePopup() {
   const [name, setName] = React.useState('');

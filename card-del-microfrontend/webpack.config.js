@@ -65,7 +65,10 @@ module.exports = (_, argv) => ({
       name: "card_del_microfrontend",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        './CardDel': './src/components/CardDel.js',
+        './PopupWithForm': './src/components/PopupWithForm.js',
+      },
       shared: {
         ...deps,
         react: {
